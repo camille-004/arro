@@ -1,5 +1,15 @@
 DIGITS = '0123456789'
 
+INT = 'INT'
+FLOAT = 'FLOAT'
+ADD = 'ADD'
+SUB = 'SUB'
+MUL = 'MUL'
+DIV = 'DIV'
+O_PAREN = 'O_PAREN'
+C_PAREN = 'C_PAREN'
+EOF = 'EOF'
+
 
 class Error:
     def __init__(self, start, end, name, content):
@@ -47,21 +57,6 @@ class Pos:
         return Pos(self.idx, self.ln, self.col, self.fn, self.content)
 
 
-#######################################
-# TOKENS
-#######################################
-
-INT = 'INT'
-FLOAT = 'FLOAT'
-ADD = 'ADD'
-SUB = 'SUB'
-MUL = 'MUL'
-DIV = 'DIV'
-O_PAREN = 'O_PAREN'
-C_PAREN = 'C_PAREN'
-EOF = 'EOF'
-
-
 class Token:
     def __init__(self, type_, value=None, start=None, end=None):
         self.type = type_
@@ -80,10 +75,6 @@ class Token:
             return f'{self.type} | {self.value}'
         return f'{self.type}'
 
-
-#######################################
-# LEXER
-#######################################
 
 class Lexer:
     def __init__(self, fn, text):
